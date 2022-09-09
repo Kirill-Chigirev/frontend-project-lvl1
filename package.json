@@ -22,5 +22,8 @@
   "homepage": "https://github.com/Kirill-Chigirev/frontend-project-lvl1#readme",
   "dependencies": {
     "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1"
   }
 }
