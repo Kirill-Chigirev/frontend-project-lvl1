@@ -3,3 +3,5 @@
 [![Actions Status](https://github.com/Kirill-Chigirev/frontend-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/Kirill-Chigirev/frontend-project-lvl1/actions)
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/976a467c5973432e5702/test_coverage)](https://codeclimate.com/github/Kirill-Chigirev/frontend-project-lvl1/test_coverage)
+
+[![asciicast](https://asciinema.org/a/D2Qsnp7y62rkCSQPIIkbFfKIM.svg)](https://asciinema.org/a/D2Qsnp7y62rkCSQPIIkbFfKIM)
