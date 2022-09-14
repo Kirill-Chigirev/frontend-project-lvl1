@@ -2,7 +2,7 @@
 
 import readlineSync from 'readline-sync';
 
-const questions = () => {
+const even = () => {
   const numbers = [15, 6, 7];
 
   console.log('Welcome to the Brain Games!');
@@ -17,7 +17,7 @@ const questions = () => {
       console.log('Correct!');
     } else {
       // eslint-disable-next-line no-shadow
-      const oppositeMean = (num) => {
+      const rightAnswer = (num) => {
         if (num % 2 === 0) {
           return 'yes';
         // eslint-disable-next-line no-else-return
@@ -25,7 +25,7 @@ const questions = () => {
           return 'no';
         }
       };
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${oppositeMean()}'.`);
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer()}'.`);
       console.log(`Let's try again, ${userName}!`);
       return;
     }
@@ -33,4 +33,4 @@ const questions = () => {
   console.log(`Congratulations, ${userName}!`);
 };
 
-questions();
+even();
