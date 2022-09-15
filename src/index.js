@@ -1,12 +1,44 @@
 import readlineSync from 'readline-sync';
 import {
-  cons, car, cdr, toString, isPair,
+  cons, car, cdr,
 } from '@hexlet/pairs';
-// eslint-disable-next-line import/prefer-default-export
+
+const getRandomArrayElement = (arr) => arr[Math.floor(Math.random() * arr.length)];
+const getRandomInRange = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+export const even = () => {
+  const numbers = [15, 6, 7];
+
+  console.log('Welcome to the Brain Games!');
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
+  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  // eslint-disable-next-line no-restricted-syntax
+  for (const num of numbers) {
+    console.log(`Question: ${num}`);
+    const answer = readlineSync.question('Your answer: ');
+    if ((num % 2 === 0 && answer === 'yes') || (num % 2 !== 0 && answer === 'no')) {
+      console.log('Correct!');
+    } else {
+      // eslint-disable-next-line no-shadow
+      const rightAnswer = (num) => {
+        if (num % 2 === 0) {
+          return 'yes';
+        // eslint-disable-next-line no-else-return
+        } else {
+          return 'no';
+        }
+      };
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer()}'.`);
+      console.log(`Let's try again, ${userName}!`);
+      return;
+    }
+  }
+  console.log(`Congratulations, ${userName}!`);
+};
+
 export const calc = () => {
   const operations = ['+', '-', '*'];
-  const getRandomArrayElement = (arr) => arr[Math.floor(Math.random() * arr.length)];
-  const getRandomInRange = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
   console.log('Welcome to the Brain Games!');
   const userName = readlineSync.question('May I have your name? ');
@@ -39,5 +71,44 @@ export const calc = () => {
       return;
     }
   }
+  console.log(`Congratulations, ${userName}!`);
+};
+
+// eslint-disable-next-line consistent-return
+export const gcd = () => {
+  console.log('Welcome to the Brain Games!');
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
+  console.log('Find the greatest common divisor of given numbers.');
+
+  for (let i = 0; i < 3; i += 1) {
+    const pair = cons(getRandomInRange(0, 29), getRandomInRange(0, 29));
+    console.log(`Question: ${car(pair)} ${cdr(pair)}`);
+    const answer = readlineSync.question('Your answer: ');
+    const getLowerValue = () => ((car(pair) <= cdr(pair)) ? car(pair) : cdr(pair));
+    const getMoreValue = () => ((car(pair) >= cdr(pair)) ? car(pair) : cdr(pair));
+    const getGCD = () => {
+      // eslint-disable-next-line prefer-const
+      let index = getLowerValue();
+
+      while (index > 0) {
+        if (getLowerValue() % index === 0 && getMoreValue() % index === 0) {
+          return index;
+        }
+        index -= 1;
+      }
+
+      return index;
+    };
+
+    if (getGCD() === Number(answer)) {
+      console.log('Correct!');
+    } else {
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${getGCD()}'.`);
+      console.log(`Let's try again, ${userName}!`);
+      return;
+    }
+  }
+
   console.log(`Congratulations, ${userName}!`);
 };
