@@ -81,7 +81,7 @@ export const gcd = () => {
   console.log('Find the greatest common divisor of given numbers.');
 
   for (let i = 0; i < 3; i += 1) {
-    const pair = cons(getRandomInRange(0, 29), getRandomInRange(0, 29));
+    const pair = cons(getRandomInRange(1, 99), getRandomInRange(1, 99));
     console.log(`Question: ${car(pair)} ${cdr(pair)}`);
     const answer = readlineSync.question('Your answer: ');
     const getLowerValue = () => ((car(pair) <= cdr(pair)) ? car(pair) : cdr(pair));
