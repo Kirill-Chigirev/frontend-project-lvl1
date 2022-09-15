@@ -73,7 +73,6 @@ export const calc = () => {
   console.log(`Congratulations, ${userName}!`);
 };
 
-// eslint-disable-next-line consistent-return
 export const gcd = () => {
   console.log('Welcome to the Brain Games!');
   const userName = readlineSync.question('May I have your name? ');
@@ -87,7 +86,6 @@ export const gcd = () => {
     const getLowerValue = () => ((car(pair) <= cdr(pair)) ? car(pair) : cdr(pair));
     const getMoreValue = () => ((car(pair) >= cdr(pair)) ? car(pair) : cdr(pair));
     const getGCD = () => {
-      // eslint-disable-next-line prefer-const
       let index = getLowerValue();
 
       while (index > 0) {
@@ -104,6 +102,39 @@ export const gcd = () => {
       console.log('Correct!');
     } else {
       console.log(`'${answer}' is wrong answer ;(. Correct answer was '${getGCD()}'.`);
+      console.log(`Let's try again, ${userName}!`);
+      return;
+    }
+  }
+
+  console.log(`Congratulations, ${userName}!`);
+};
+
+export const progression = () => {
+  console.log('Welcome to the Brain Games!');
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
+  console.log('What number is missing in the progression?');
+
+  for (let i = 0; i < 3; i += 1) {
+    const step = getRandomInRange(2, 10);
+    const numbers = [getRandomInRange(1, 99)];
+
+    // eslint-disable-next-line no-shadow
+    for (let i = 0; numbers.length <= 10; i += 1) {
+      numbers.push(numbers[i] + step);
+    }
+    const getRandomArrIndex = Math.floor(Math.random() * numbers.length);
+    const randomIndex = getRandomArrIndex;
+    const valueRandomElement = numbers[randomIndex];
+    numbers[randomIndex] = '..';
+    console.log(`Question: ${numbers.join(' ')}`);
+    const answer = readlineSync.question('Your answer: ');
+
+    if (Number(answer) === valueRandomElement) {
+      console.log('Correct!');
+    } else {
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${valueRandomElement}'.`);
       console.log(`Let's try again, ${userName}!`);
       return;
     }
