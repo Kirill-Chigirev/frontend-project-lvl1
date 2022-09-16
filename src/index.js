@@ -11,7 +11,7 @@ export const even = () => {
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
-  // eslint-disable-next-line no-restricted-syntax
+
   for (let i = 0; i < 3; i += 1) {
     const randomNum = getRandomInRange(1, 99);
     console.log(`Question: ${randomNum}`);
@@ -20,14 +20,7 @@ export const even = () => {
       console.log('Correct!');
     } else {
       // eslint-disable-next-line no-shadow
-      const rightAnswer = (randomNum) => {
-        if (randomNum % 2 === 0) {
-          return 'yes';
-        // eslint-disable-next-line no-else-return
-        } else {
-          return 'no';
-        }
-      };
+      const rightAnswer = () => (randomNum % 2 !== 0 ? 'no' : 'yes');
       console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer()}'.`);
       console.log(`Let's try again, ${userName}!`);
       return;
@@ -135,6 +128,44 @@ export const progression = () => {
       console.log('Correct!');
     } else {
       console.log(`'${answer}' is wrong answer ;(. Correct answer was '${valueRandomElement}'.`);
+      console.log(`Let's try again, ${userName}!`);
+      return;
+    }
+  }
+
+  console.log(`Congratulations, ${userName}!`);
+};
+
+export const prime = () => {
+  console.log('Welcome to the Brain Games!');
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
+  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
+
+  for (let i = 0; i < 3; i += 1) {
+    const randomNum = getRandomInRange(2, 101);
+    console.log(`Question: ${randomNum}`);
+    const answer = readlineSync.question('Your answer: ');
+
+    const isPrimeNumber = (num) => {
+      let divider = 2;
+
+      while (divider <= num / 2) {
+        if (num % divider === 0) {
+          return false;
+        }
+
+        divider += 1;
+      }
+
+      return true;
+    };
+
+    if ((isPrimeNumber(randomNum) === true && answer === 'yes') || (isPrimeNumber(randomNum) === false && answer === 'no')) {
+      console.log('Correct!');
+    } else {
+      const rightAnswer = (func) => (func === false ? 'no' : 'yes');
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer(isPrimeNumber(randomNum))}'.`);
       console.log(`Let's try again, ${userName}!`);
       return;
     }
