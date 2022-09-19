@@ -1,3 +1,7 @@
+### Hexlet tests and linter status:
+
+[![Actions Status](https://github.com/Kirill-Chigirev/frontend-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/Kirill-Chigirev/frontend-project-lvl1/actions) [![Maintainability](https://api.codeclimate.com/v1/badges/976a467c5973432e5702/maintainability)](https://codeclimate.com/github/Kirill-Chigirev/frontend-project-lvl1/maintainability)
+
 # Проект "Игры разума"
 
 ## Установка
@@ -23,9 +27,3 @@ make lint
 ##  Игра "Brain-prime"
 ---
 [![asciicast](https://asciinema.org/a/OMg4eE4wyR3uBpdIQHmhBuMMq.svg)](https://asciinema.org/a/OMg4eE4wyR3uBpdIQHmhBuMMq)
-
-### Hexlet tests and linter status:
-
-[![Actions Status](https://github.com/Kirill-Chigirev/frontend-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/Kirill-Chigirev/frontend-project-lvl1/actions)
-
-[![Test Coverage](https://api.codeclimate.com/v1/badges/976a467c5973432e5702/test_coverage)](https://codeclimate.com/github/Kirill-Chigirev/frontend-project-lvl1/test_coverage)
