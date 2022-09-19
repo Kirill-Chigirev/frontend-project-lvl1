@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import { getRandomInRange } from '../src/index.js';
+import { getRandomInRange } from '../index.js';
 
 export default () => {
   console.log('Welcome to the Brain Games!');
@@ -14,8 +14,8 @@ export default () => {
     if ((randomNum % 2 === 0 && answer === 'yes') || (randomNum % 2 !== 0 && answer === 'no')) {
       console.log('Correct!');
     } else {
-      const rightAnswer = () => (randomNum % 2 !== 0 ? 'no' : 'yes');
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer()}'.`);
+      const getRightAnswer = () => (randomNum % 2 !== 0 ? 'no' : 'yes');
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${getRightAnswer()}'.`);
       console.log(`Let's try again, ${userName}!`);
       return;
     }

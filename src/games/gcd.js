@@ -1,8 +1,5 @@
 import readlineSync from 'readline-sync';
-import {
-  cons, car, cdr,
-} from '@hexlet/pairs';
-import { getRandomInRange } from '../src/index.js';
+import { getRandomInRange } from '../index.js';
 
 export default () => {
   console.log('Welcome to the Brain Games!');
@@ -11,11 +8,12 @@ export default () => {
   console.log('Find the greatest common divisor of given numbers.');
 
   for (let i = 0; i < 3; i += 1) {
-    const pair = cons(getRandomInRange(1, 99), getRandomInRange(1, 99));
-    console.log(`Question: ${car(pair)} ${cdr(pair)}`);
+    const firstNum = getRandomInRange(1, 99);
+    const secondNum = getRandomInRange(1, 99);
+    console.log(`Question: ${firstNum} ${secondNum}`);
     const answer = readlineSync.question('Your answer: ');
-    const getLowerValue = () => ((car(pair) <= cdr(pair)) ? car(pair) : cdr(pair));
-    const getMoreValue = () => ((car(pair) >= cdr(pair)) ? car(pair) : cdr(pair));
+    const getLowerValue = () => ((firstNum <= secondNum) ? firstNum : secondNum);
+    const getMoreValue = () => ((firstNum >= secondNum) ? firstNum : secondNum);
     const getGCD = () => {
       let index = getLowerValue();
 

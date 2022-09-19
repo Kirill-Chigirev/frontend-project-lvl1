@@ -1,8 +1,5 @@
 import readlineSync from 'readline-sync';
-import {
-  cons, car, cdr,
-} from '@hexlet/pairs';
-import { getRandomInRange, getRandomArrayElement } from '../src/index.js';
+import { getRandomInRange, getRandomArrayElement } from '../index.js';
 
 export default () => {
   const operations = ['+', '-', '*'];
@@ -13,9 +10,10 @@ export default () => {
   console.log('What is the result of the expression?');
   for (let i = 0; i < 3; i += 1) {
     const randomOperator = getRandomArrayElement(operations);
-    const pair = cons(getRandomInRange(0, 29), getRandomInRange(0, 29));
-    const randExp = `${car(pair)} ${randomOperator} ${cdr(pair)}`;
-    console.log(`Question: ${randExp}`);
+    const firstNum = getRandomInRange(0, 29);
+    const secondNum = getRandomInRange(0, 29);
+    const randomExp = `${firstNum} ${randomOperator} ${secondNum}`;
+    console.log(`Question: ${randomExp}`);
     const answer = readlineSync.question('Your answer: ');
     const getRightAnswer = (a, b, op) => {
       let result;
@@ -29,7 +27,7 @@ export default () => {
 
       return result;
     };
-    const rightAnswer = getRightAnswer(car(pair), cdr(pair), randomOperator);
+    const rightAnswer = getRightAnswer(firstNum, secondNum, randomOperator);
     if (rightAnswer === Number(answer)) {
       console.log('Correct!');
     } else {

@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import { getRandomInRange } from '../src/index.js';
+import { getRandomInRange } from '../index.js';
 
 export default () => {
   console.log('Welcome to the Brain Games!');
@@ -29,8 +29,8 @@ export default () => {
     if ((isPrimeNumber(randomNum) === true && answer === 'yes') || (isPrimeNumber(randomNum) === false && answer === 'no')) {
       console.log('Correct!');
     } else {
-      const rightAnswer = (func) => (func === false ? 'no' : 'yes');
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer(isPrimeNumber(randomNum))}'.`);
+      const getRightAnswer = (func) => (func === false ? 'no' : 'yes');
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${getRightAnswer(isPrimeNumber(randomNum))}'.`);
       console.log(`Let's try again, ${userName}!`);
       return;
     }
