@@ -1,24 +1,18 @@
-import readlineSync from 'readline-sync';
-import { getRandomInRange } from '../index.js';
+import run from '../index.js';
+import getRandomInRange from '../utilites.js';
+
+const rules = 'Answer "yes" if the number is even, otherwise answer "no".';
+const minNumber = 0;
+const maxNumber = 99;
+
+const isEven = (num) => num % 2 === 0;
+
+const gameRound = () => {
+  const question = getRandomInRange(minNumber, maxNumber);
+  const answer = isEven(question) ? 'yes' : 'no';
+  return [question, answer];
+};
 
 export default () => {
-  console.log('Welcome to the Brain Games!');
-  const userName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${userName}!`);
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
-
-  for (let i = 0; i < 3; i += 1) {
-    const randomNum = getRandomInRange(1, 99);
-    console.log(`Question: ${randomNum}`);
-    const answer = readlineSync.question('Your answer: ');
-    if ((randomNum % 2 === 0 && answer === 'yes') || (randomNum % 2 !== 0 && answer === 'no')) {
-      console.log('Correct!');
-    } else {
-      const getRightAnswer = () => (randomNum % 2 !== 0 ? 'no' : 'yes');
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${getRightAnswer()}'.`);
-      console.log(`Let's try again, ${userName}!`);
-      return;
-    }
-  }
-  console.log(`Congratulations, ${userName}!`);
+  run(rules, gameRound);
 };

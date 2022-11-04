@@ -1,34 +1,35 @@
-import readlineSync from 'readline-sync';
-import { getRandomInRange } from '../index.js';
+import run from '../index.js';
+import getRandomInRange from '../utilites.js';
 
-export default () => {
-  console.log('Welcome to the Brain Games!');
-  const userName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${userName}!`);
-  console.log('What number is missing in the progression?');
+const rules = 'What number is missing in the progression?';
+const minStep = 2;
+const maxStep = 10;
+const minNumber = 1;
+const maxNumber = 99;
 
-  for (let i = 0; i < 3; i += 1) {
-    const step = getRandomInRange(2, 10);
-    const numbers = [getRandomInRange(1, 99)];
+const getProgression = () => {
+  const firstNumber = getRandomInRange(minNumber, maxNumber);
+  const step = getRandomInRange(minStep, maxStep);
+  const numbers = [firstNumber];
 
-    for (let ind = 0; numbers.length <= 10; ind += 1) {
-      numbers.push(numbers[ind] + step);
-    }
-    const randomArrIndex = Math.floor(Math.random() * numbers.length);
-    const randomIndex = randomArrIndex;
-    const randomElementValue = numbers[randomIndex];
-    numbers[randomIndex] = '..';
-    console.log(`Question: ${numbers.join(' ')}`);
-    const answer = readlineSync.question('Your answer: ');
-
-    if (Number(answer) === randomElementValue) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${randomElementValue}'.`);
-      console.log(`Let's try again, ${userName}!`);
-      return;
-    }
+  for (let i = 0; numbers.length <= 9; i += 1) {
+    numbers.push(numbers[i] + step);
   }
 
-  console.log(`Congratulations, ${userName}!`);
+  return numbers;
+};
+
+const gameRound = () => {
+  const progression = getProgression();
+  const randomIndex = Math.floor(Math.random() * progression.length);
+  const randomElement = progression[randomIndex];
+  progression[randomIndex] = '..';
+  const question = progression.join(' ');
+  const answer = String(randomElement);
+
+  return [question, answer];
+};
+
+export default () => {
+  run(rules, gameRound);
 };

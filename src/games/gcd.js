@@ -1,40 +1,28 @@
-import readlineSync from 'readline-sync';
-import { getRandomInRange } from '../index.js';
+import run from '../index.js';
+import getRandomInRange from '../utilites.js';
 
-export default () => {
-  console.log('Welcome to the Brain Games!');
-  const userName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${userName}!`);
-  console.log('Find the greatest common divisor of given numbers.');
+const rules = 'Find the greatest common divisor of given numbers.';
+const minNumber = 2;
+const maxNumber = 99;
 
-  for (let i = 0; i < 3; i += 1) {
-    const firstNum = getRandomInRange(1, 99);
-    const secondNum = getRandomInRange(1, 99);
-    console.log(`Question: ${firstNum} ${secondNum}`);
-    const answer = readlineSync.question('Your answer: ');
-    const getLowerValue = () => ((firstNum <= secondNum) ? firstNum : secondNum);
-    const getMoreValue = () => ((firstNum >= secondNum) ? firstNum : secondNum);
-    const getGCD = () => {
-      let index = getLowerValue();
-
-      while (index > 0) {
-        if (getLowerValue() % index === 0 && getMoreValue() % index === 0) {
-          return index;
-        }
-        index -= 1;
-      }
-
-      return index;
-    };
-
-    if (getGCD() === Number(answer)) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${getGCD()}'.`);
-      console.log(`Let's try again, ${userName}!`);
-      return;
+const getGCD = (x, y) => {
+  for (let i = Math.min(x, y); i >= 1; i -= 1) {
+    if (x % i === 0 && y % i === 0) {
+      return i;
     }
   }
 
-  console.log(`Congratulations, ${userName}!`);
+  return x;
+};
+
+const gameRound = () => {
+  const firstNumber = getRandomInRange(minNumber, maxNumber);
+  const secondNumber = getRandomInRange(minNumber, maxNumber);
+  const question = `${firstNumber} ${secondNumber}`;
+  const answer = String(getGCD(firstNumber, secondNumber));
+  return [question, answer];
+};
+
+export default () => {
+  run(rules, gameRound);
 };
