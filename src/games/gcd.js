@@ -15,7 +15,7 @@ const getGCD = (x, y) => {
   return x;
 };
 
-const gameRound = () => {
+const getGameRound = () => {
   const firstNumber = getRandomInRange(minNumber, maxNumber);
   const secondNumber = getRandomInRange(minNumber, maxNumber);
   const question = `${firstNumber} ${secondNumber}`;
@@ -24,5 +24,5 @@ const gameRound = () => {
 };
 
 export default () => {
-  run(rules, gameRound);
+  run(rules, getGameRound);
 };

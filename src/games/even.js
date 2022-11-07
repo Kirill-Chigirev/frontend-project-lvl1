@@ -7,12 +7,12 @@ const maxNumber = 99;
 
 const isEven = (num) => num % 2 === 0;
 
-const gameRound = () => {
+const getGameRound = () => {
   const question = getRandomInRange(minNumber, maxNumber);
   const answer = isEven(question) ? 'yes' : 'no';
   return [question, answer];
 };
 
 export default () => {
-  run(rules, gameRound);
+  run(rules, getGameRound);
 };

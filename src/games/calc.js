@@ -20,7 +20,7 @@ const getExpression = (firstNumber, secondNumber, operator) => {
   }
 };
 
-const gameRound = () => {
+const getGameRound = () => {
   const firstNumber = getRandomInRange(minNumber, maxNumber);
   const secondNumber = getRandomInRange(minNumber, maxNumber);
   const operator = getRandomArrayElement(operations);
@@ -30,5 +30,5 @@ const gameRound = () => {
 };
 
 export default () => {
-  run(rules, gameRound);
+  run(rules, getGameRound);
 };

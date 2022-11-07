@@ -19,7 +19,7 @@ const getProgression = () => {
   return numbers;
 };
 
-const gameRound = () => {
+const getGameRound = () => {
   const progression = getProgression();
   const randomIndex = Math.floor(Math.random() * progression.length);
   const randomElement = progression[randomIndex];
@@ -31,5 +31,5 @@ const gameRound = () => {
 };
 
 export default () => {
-  run(rules, gameRound);
+  run(rules, getGameRound);
 };

@@ -8,19 +8,19 @@ const maxNumber = 101;
 const isPrimeNumber = (num) => {
   for (let i = 2; i <= num / 2; i += 1) {
     if (num % i === 0) {
-      return 'no';
+      return false;
     }
   }
 
-  return 'yes';
+  return true;
 };
 
-const gameRound = () => {
+const getGameRound = () => {
   const question = getRandomInRange(minNumber, maxNumber);
-  const answer = isPrimeNumber(question);
+  const answer = isPrimeNumber(question) ? 'yes' : 'no';
   return [question, answer];
 };
 
 export default () => {
-  run(rules, gameRound);
+  run(rules, getGameRound);
 };
