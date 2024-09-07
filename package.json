@@ -5,11 +5,14 @@
   "description": "[![Actions Status](https://github.com/Kirill-Chigirev/frontend-project-lvl1/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Kirill-Chigirev/frontend-project-lvl1/actions)",
   "main": "index.js",
   "bin": {
-  "brain-games": "bin/brain-games.js"
+    "brain-games": "bin/brain-games.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kirill Chigirev",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }
