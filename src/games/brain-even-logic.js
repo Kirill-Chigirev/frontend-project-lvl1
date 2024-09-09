@@ -8,7 +8,7 @@ export default () => {
   let round = 0;
 
   while (round < 3) {
-    const randomNumber = getRandomNumber();
+    const randomNumber = getRandomNumber(99);
     const getRightAnswer = () => ((randomNumber % 2 === 0) ? 'yes' : 'no');
     const rightAnswer = getRightAnswer();
 
@@ -17,7 +17,7 @@ export default () => {
 
     if (answer !== rightAnswer) {
       console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
-      console.log(`Let's try again, ${name}`);
+      console.log(`Let's try again, ${name}!`);
       return;
     }
     console.log('Correct!');

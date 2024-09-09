@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import getGame from '../src/games/brain-even-logic.js';
+import startGame from '../src/games/brain-even-logic.js';
 
-getGame();
+startGame();
